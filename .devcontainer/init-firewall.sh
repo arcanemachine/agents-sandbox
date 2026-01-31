@@ -69,12 +69,16 @@ done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 
 # Resolve and add other allowed domains
 for domain in \
-    "registry.npmjs.org" \
     "api.anthropic.com" \
-    "builds.hex.pm" \
-    "hex.pm" \
-    "repo.hex.pm" \
     "elixirforum.com" \
+    "exa.ai" \
+    "registry.npmjs.org" \
+    "integrate.api.nvidia.com" \
+    "hex.pm" \
+    "builds.hex.pm" \
+    "models.dev" \
+    "opencode.ai" \
+    "openrouter.ai" \
     "www.python.org"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
@@ -82,7 +86,7 @@ for domain in \
         echo "ERROR: Failed to resolve $domain"
         exit 1
     fi
-    
+
     while read -r ip; do
         if [[ ! "$ip" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
             echo "ERROR: Invalid IP from DNS for $domain: $ip"

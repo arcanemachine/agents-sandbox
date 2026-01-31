@@ -1,0 +1,83 @@
+#!/bin/sh
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+  # show help info and exit
+  echo "
+A helper script for running Elixir tests. Runs tests in 'watch mode' so that tests will be re-run when a file is changed (requires 'ag' and 'entr' to be installed).
+
+** Must be run from the root directory of the Elixir project you are working with. **
+
+## Running Specific Tests
+
+You can run specific tests by line number or tag.
+
+
+### Running Tests from a Specific Module
+
+To run tests from a specific module, specify the path to the module that contains the desired test. For example:
+
+  - 'mix test test/your_test.ex'
+
+
+### Running Tests By Line Number
+
+To run a test by its line number, specify the path to the module that contains the desired test, and append a colon and the desired line number to the file path. For example:
+
+  - 'mix test test/your_test.ex:123'
+
+
+### Running Tests By Tag
+
+To test by tag, the test must first be given a tag. For example:
+
+  @tag :your_tag
+  describe 'your_test' do
+    ...
+  end
+
+Then, to run the tagged tests, pass the '--include' flag with the matching key-value pair when starting the test runner. For example:
+
+  - 'mix test --only your_tag'
+
+
+## Excluding Specific Tests
+
+You can exclude specific tests by tag. Follow the instructions above to add a tag to the test(s) you want to exclude.
+
+
+### Excluding Tests by Tag
+
+To exclude the tagged test(s), pass the '--exclude' flag with the matching key-value pair when starting the test runner:
+
+  - 'mix test --exclude your_tag:true'  # no space between key and value
+
+
+## Running Tests Sequentially
+
+Tests can be run in a non-random order by setting the seed to 0. For example:
+
+  - 'mix test --seed 0'
+
+## Fail After a Certain Number of Tests
+
+  - 'mix test --max-failures 1'
+
+## Re-run tests when Enter key pressed
+
+  - 'mix test --listen-on-stdin'
+
+## Re-run tests only when the module is changed
+
+  - 'mix test --stale'
+
+## Re-run only failed tests
+
+  - 'mix test --failed'
+"
+  exit 0
+fi
+
+# # this implementation works OK but doesn't re-run the command when the spacebar key is pressed
+# watchexec --exts ex,exs,eex,heex,js,ts mix test "$@"
+
+until ag -g "\.(ex|exs|eex|heex|js|ts)$" | entr -d sh -c 'mix test "$@"; echo ""; echo "Finished on: $(date -Iseconds)"' -- "$@"; do sleep 1; done

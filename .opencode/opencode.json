@@ -1,0 +1,70 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/kimi-k2.5-free",
+  "experimental": {
+    "disable_paste_summary": true
+  },
+  "provider": {
+    "nano-gpt": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "NanoGPT",
+      "options": {
+        "baseURL": "https://nano-gpt.com/api/v1"
+      },
+      "models": {
+        "moonshotai/kimi-k2.5-original:thinking": {
+          "name": "Kimi K2.5 (Thinking, Moonshot)",
+          "limit": { "context": 200000, "output": 32000 }
+        },
+        "moonshotai/kimi-k2.5:thinking": {
+          "name": "Kimi K2.5 (Thinking)",
+          "limit": { "context": 200000, "output": 32000 }
+        },
+        "moonshotai/kimi-k2.5": {
+          "name": "Kimi K2.5",
+          "limit": { "context": 200000, "output": 32000 }
+        },
+        "moonshotai/kimi-k2.5-original": {
+          "name": "Kimi K2.5 (Moonshot)",
+          "limit": { "context": 200000, "output": 32000 }
+        }
+      }
+    },
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://172.16.0.1:11434/v1"
+      },
+      "models": {
+        "qwen3-coder-30b-a3b-instruct:latest": {
+          "name": "Qwen3 Coder 30B",
+          "supportsTools": true
+        },
+        "qwen3-4b:latest": {
+          "name": "Qwen3 4B",
+          "supportsTools": true
+        },
+        "glm-4.7-flash:latest": {
+          "name": "GLM 4.7 Flash",
+          "supportsTools": true
+        }
+      }
+    },
+    "openrouter-free": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "OpenRouter (Free)",
+      "options": {
+        "baseURL": "https://openrouter.ai/api/v1"
+      },
+      "models": {
+        "openrouter/pony-alpha": {
+          "limit": {
+            "context": 200000,
+            "output": 120000
+          }
+        }
+      }
+    }
+  }
+}

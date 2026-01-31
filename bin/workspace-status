@@ -1,0 +1,11 @@
+#!/bin/bash
+# Quick workspace status check
+
+echo "=== Environment Status ==="
+bash -l -c 'asdf current' 2>/dev/null | grep -E "(elixir|erlang)" || echo "Run: /workspace/scripts/setup.sh"
+
+echo -e "\n=== Projects ==="
+ls -d /workspace/projects/*/ 2>/dev/null | xargs -n1 basename || echo "No projects found"
+
+echo -e "\n=== Agent Docs ==="
+find /workspace -maxdepth 3 -type f \( -iname "*usage*.md" -o -iname "*claude*.md" -o -iname "*agent*.md" -o -iname "*ai*.md" \) 2>/dev/null | head -5 || echo "None found"

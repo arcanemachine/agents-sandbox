@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "WebFetch(domain:asdf-vm.com)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:hexdocs.pm)",
+      "WebFetch(domain:elixirforum.com)",
+      "WebFetch(domain:opencode.ai)",
+      "WebFetch(domain:docs.ollama.com)"
+    ]
+  }
+}

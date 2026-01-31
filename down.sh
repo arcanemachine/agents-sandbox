@@ -1,2 +1,2 @@
-docker stop opencode
-docker rm opencode
+docker stop agents
+docker rm agents

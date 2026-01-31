@@ -1,1 +1,1 @@
-docker stop opencode; docker rm opencode; ./up.sh
+docker stop agents; docker rm opencode; ./up.sh

@@ -1,6 +1,2 @@
-.DS_Store
-
-/local/tmp
-/local/projects/*
-
 .venv
+AGENTS.TODO.md

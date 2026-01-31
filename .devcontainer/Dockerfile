@@ -3,6 +3,8 @@ FROM node:20
 ARG TZ
 ENV TZ="$TZ"
 
+ARG CLAUDE_CODE_VERSION=latest
+
 # Install basic development tools and iptables/ipset
 RUN apt-get update && apt-get install -y --no-install-recommends \
   less \
@@ -10,7 +12,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   procps \
   sudo \
   fzf \
-  zsh \
   man-db \
   unzip \
   gnupg2 \
@@ -28,6 +29,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install custom utilities
 RUN apt-get update && apt-get install -y --no-install-recommends \
+  entr \
+  ripgrep \
+  silversearcher-ag \
   tmux \
   tree \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -55,17 +59,21 @@ RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhisto
 # Set `DEVCONTAINER` environment variable to help with orientation
 ENV DEVCONTAINER=true
 
-# Create workspace and config directories and set permissions
+# Create workspace and config directories and set permissions (Claude Code)
+RUN mkdir -p /workspace /home/node/.claude && \
+  chown -R node:node /workspace /home/node/.claude
+
+# Create workspace and config directories and set permissions (OpenCode)
 RUN mkdir -p /workspace /home/node/.opencode && \
   chown -R node:node /workspace /home/node/.opencode
 
 WORKDIR /workspace
 
-# ARG GIT_DELTA_VERSION=0.18.2
-# RUN ARCH=$(dpkg --print-architecture) && \
-#   wget "https://github.com/dandavison/delta/releases/download/${GIT_DELTA_VERSION}/git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
-#   sudo dpkg -i "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
-#   rm "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb"
+ARG GIT_DELTA_VERSION=0.18.2
+RUN ARCH=$(dpkg --print-architecture) && \
+  wget "https://github.com/dandavison/delta/releases/download/${GIT_DELTA_VERSION}/git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
+  sudo dpkg -i "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
+  rm "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb"
 
 # Set up non-root user
 USER node
@@ -77,8 +85,8 @@ ENV PATH=/home/node/.local/bin:$PATH:/usr/local/share/npm-global/bin
 # Install global packages
 ENV NPM_CONFIG_PREFIX=/usr/local/share/npm-global
 
-# Set the default shell to zsh rather than sh
-ENV SHELL=/bin/zsh
+# Set the default shell to bash rather than sh
+ENV SHELL=/bin/bash
 
 # Set the default editor and visual
 ENV EDITOR=nano
@@ -86,6 +94,9 @@ ENV VISUAL=nano
 
 # Install OpenCode
 RUN npm install -g opencode-ai
+
+# Install Claude Code
+RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
 
 # Copy and set up firewall script
 COPY init-firewall.sh /usr/local/bin/
