@@ -1,2 +1,3 @@
 .venv
 AGENTS.TODO.md
+*.local.env

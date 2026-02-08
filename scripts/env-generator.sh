@@ -2,7 +2,7 @@
 # Generic environment variable generator script
 # Run this from the host machine (where docker is available)
 # Must be run from the workspace root directory
-# Creates container.env file with current container environment variables
+# Creates container.local.env file with current container environment variables
 
 set -e
 
@@ -10,7 +10,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-ENV_FILE="$WORKSPACE_ROOT/container.env"
+ENV_FILE="$WORKSPACE_ROOT/container.local.env"
 CONTAINER_NAME="postgres"
 
 echo "Generating environment file..."

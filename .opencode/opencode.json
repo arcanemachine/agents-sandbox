@@ -4,17 +4,26 @@
   "experimental": {
     "disable_paste_summary": true
   },
+  "mode": {
+    "simple-agent": {
+      "prompt": "{file:./prompts/simple-agent.txt}"
+    }
+  },
   "provider": {
-    "nano-gpt": {
+    "nanogpt-subscription": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "NanoGPT",
+      "name": "NanoGPT (Subscription)",
       "options": {
-        "baseURL": "https://nano-gpt.com/api/v1"
+        "baseURL": "https://nano-gpt.com/api/subscription/v1"
       },
       "models": {
-        "moonshotai/kimi-k2.5-original:thinking": {
-          "name": "Kimi K2.5 (Thinking, Moonshot)",
-          "limit": { "context": 200000, "output": 32000 }
+        "minimax/minimax-m2.5": {
+          "name": "Minimax M2.5",
+          "limit": { "context": 200000, "output": 13000 }
+        },
+        "mistralai/mistral-large-3-675b-instruct-2512": {
+          "name": "Mistral Large 3 675B Instruct",
+          "limit": { "context": 260000, "output": 256000 }
         },
         "moonshotai/kimi-k2.5:thinking": {
           "name": "Kimi K2.5 (Thinking)",
@@ -24,9 +33,17 @@
           "name": "Kimi K2.5",
           "limit": { "context": 200000, "output": 32000 }
         },
-        "moonshotai/kimi-k2.5-original": {
-          "name": "Kimi K2.5 (Moonshot)",
-          "limit": { "context": 200000, "output": 32000 }
+        "qwen/qwen3-coder-next": {
+          "name": "Qwen3 Coder Next",
+          "limit": { "context": 256000, "output": 64000 }
+        },
+        "stepfun-ai/step-3.5-flash:thinking": {
+          "name": "Step 3.5 Flash (Thinking)",
+          "limit": { "context": 256000, "output": 32000 }
+        },
+        "zai-org/glm-5:thinking": {
+          "name": "GLM 5 (Thinking)",
+          "limit": { "context": 200000, "output": 128000 }
         }
       }
     },
@@ -39,11 +56,13 @@
       "models": {
         "qwen3-coder-30b-a3b-instruct:latest": {
           "name": "Qwen3 Coder 30B",
-          "supportsTools": true
+          "supportsTools": true,
+          "limit": { "context": 16000, "output": 8000 }
         },
         "qwen3-4b:latest": {
           "name": "Qwen3 4B",
-          "supportsTools": true
+          "supportsTools": true,
+          "limit": { "context": 64000, "output": 16000 }
         },
         "glm-4.7-flash:latest": {
           "name": "GLM 4.7 Flash",

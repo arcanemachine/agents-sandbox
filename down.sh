@@ -1,2 +1,2 @@
-docker stop agents
-docker rm agents
+docker stop agents-sandbox
+docker rm agents-sandbox

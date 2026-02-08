@@ -6,11 +6,12 @@
       "TZ": "${localEnv:TZ:America/Edmonton}"
     }
   },
-  "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW", "--name=agents"],
+  "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW", "--name=agents-sandbox"],
   "remoteUser": "node",
   "mounts": [
-    "source=agents-claude-code-config,target=/home/node/.claude,type=volume",
-    "source=agents-asdf,target=/home/node/.asdf,type=volume"
+    "source=agents-sandbox-claude-code-config,target=/home/node/.claude,type=volume",
+    "source=agents-sandbox-asdf,target=/home/node/.asdf,type=volume",
+    "source=agents-sandbox-opencode-api-keys,target=/home/.local/share/opencode,type=volume"
   ],
   "containerEnv": {
     "NODE_OPTIONS": "--max-old-space-size=4096"

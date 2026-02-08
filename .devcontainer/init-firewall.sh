@@ -79,7 +79,9 @@ for domain in \
     "models.dev" \
     "opencode.ai" \
     "openrouter.ai" \
-    "www.python.org"; do
+    "www.python.org" \
+    "pypi.org" \
+    "files.pythonhosted.org"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
     if [ -z "$ips" ]; then

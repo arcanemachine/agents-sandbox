@@ -23,7 +23,7 @@ if ! grep -q '## asdf (Also configured in' ~/.bashrc 2>/dev/null; then
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="${ASDF_DATA_DIR}/shims:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="/workspace/local/bin:$PATH"
+export PATH="/workspace/bin:$PATH"
 . <(asdf completion bash)
 EOF
   echo "Configured ~/.bashrc"
