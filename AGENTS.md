@@ -114,10 +114,25 @@ with `workdir="/workspace/projects/<project-name>"`
 **Check for Python via ASDF first** when starting a Python project:
 
 1. Run `asdf list python` to check if Python is installed
-2. If Python is not installed, ask the user which version they want (e.g., "Which Python version would you like to install? 3.11, 3.12, etc.")
-3. Once user confirms, install with: `asdf install python <version>`
-4. Set the version: `asdf local python <version>`
-5. Then proceed with project setup
+2. If Python is not installed, first add the plugin: `asdf plugin add python`
+3. Ask the user which version they want (e.g., "Which Python version would you like to install? 3.11, 3.12, etc."). If they don't specify a patch version, use the newest one (use `asdf list all python` to get all current available versions).
+4. Install with: `asdf install python <version>`
+5. Set the version: `asdf set python <version>` (use `set`, not `local`)
+6. **Firewall**: PyPI domains (`pypi.org`, `files.pythonhosted.org`) must be in `/workspace/.devcontainer/init-firewall.sh` for pip to work - changes require container restart
+7. Then proceed with project setup
+
+**Virtual Environment Basics**:
+- Create venv: `python -m venv venv`
+- Activate venv: `source venv/bin/activate`
+- Always use `workdir` parameter with Bash tool for correct PATH
+
+**Pip in venv**:
+- If pip is missing in venv, use ASDF Python: `python -m pip install <package>`
+
+**Common Pitfalls**:
+- `pip` alone may not work in venv without proper PATH setup - use `python -m pip` instead
+- Network requests fail if domain isn't in firewall allow list
+- Use `export PATH="$HOME/.asdf/shims:$HOME/.asdf/bin:$PATH"` before Python commands when using Bash tool with workdir
 
 ## Project-Specific Instructions
 
