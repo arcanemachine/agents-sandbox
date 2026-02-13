@@ -58,4 +58,4 @@ You may want to source the setup script first after entering the container: `sou
 
 ## Known Issues
 
-- The API keys are not saved correctly when restarting the container.
+- The OpenCode API keys are not saved correctly when restarting the container.
