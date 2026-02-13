@@ -29,10 +29,6 @@
           "name": "Kimi K2.5 (Thinking)",
           "limit": { "context": 200000, "output": 32000 }
         },
-        "moonshotai/kimi-k2.5": {
-          "name": "Kimi K2.5",
-          "limit": { "context": 200000, "output": 32000 }
-        },
         "qwen/qwen3-coder-next": {
           "name": "Qwen3 Coder Next",
           "limit": { "context": 256000, "output": 64000 }

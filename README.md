@@ -12,6 +12,8 @@ You must have Docker and npm installed on the host machine.
 
 ## Quick Start
 
+Run these scripts from the host:
+
 ```bash
 # Setup (host): Install devcontainers CLI
 npm i -g @devcontainers/cli
