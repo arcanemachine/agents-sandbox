@@ -55,7 +55,3 @@ npm i -g @devcontainers/cli
 ## Setup
 
 You may want to source the setup script first after entering the container: `source /workspace/env.sh`
-
-## Known Issues
-
-- The OpenCode API keys are not saved correctly when restarting the container.

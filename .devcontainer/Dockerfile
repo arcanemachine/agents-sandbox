@@ -64,8 +64,8 @@ RUN mkdir -p /workspace /home/node/.claude && \
   chown -R node:node /workspace /home/node/.claude
 
 # Create workspace and config directories and set permissions (OpenCode)
-RUN mkdir -p /workspace /home/node/.opencode && \
-  chown -R node:node /workspace /home/node/.opencode
+RUN mkdir -p /workspace /home/node/.local/share/opencode /home/node/.local/state/opencode && \
+  chown -R node:node /workspace /home/node/.local
 
 WORKDIR /workspace
 
