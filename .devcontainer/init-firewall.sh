@@ -111,10 +111,10 @@ echo "Host network detected as: $HOST_NETWORK"
 iptables -A INPUT -s "$HOST_NETWORK" -j ACCEPT
 iptables -A OUTPUT -d "$HOST_NETWORK" -j ACCEPT
 
-# Allow access to LAN network (192.168.1.x)
-echo "Allowing LAN access (192.168.1.0/24)..."
-iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
-iptables -A OUTPUT -d 192.168.1.0/24 -j ACCEPT
+# Allow outbound connections to port 8080 (for LAN services)
+echo "Allowing outbound connections to port 8080..."
+iptables -A OUTPUT -p tcp --dport 8080 -j ACCEPT
+iptables -A INPUT -p tcp --sport 8080 -m state --state ESTABLISHED -j ACCEPT
 
 # Set default policies to DROP first
 iptables -P INPUT DROP
