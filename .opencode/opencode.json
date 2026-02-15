@@ -10,6 +10,19 @@
     }
   },
   "provider": {
+    "llamacpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama.cpp (local)",
+      "options": {
+        "baseURL": "http://192.168.1.135:8080/v1"
+      },
+      "models": {
+        "Qwen3-Coder-Next-Q4_0.gguf": {
+          "name": "Qwen3-Coder-Next-Q4_0.gguf",
+          "limit": { "context": 16000, "output": 4000 }
+        },
+      }
+    },
     "nanogpt-subscription": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "NanoGPT (Subscription)",
