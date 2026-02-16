@@ -9,6 +9,7 @@
       "prompt": "{file:./prompts/simple-agent.txt}"
     }
   },
+  "plugin": ["opencode-pty"],
   "provider": {
     "llamacpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -19,8 +20,8 @@
       "models": {
         "Qwen3-Coder-Next-Q4_0.gguf": {
           "name": "Qwen3-Coder-Next-Q4_0.gguf",
-          "limit": { "context": 64000, "output": 4000 }
-        },
+          "limit": { "context": 120000, "output": 8000 }
+        }
       }
     },
     "nanogpt-subscription": {
