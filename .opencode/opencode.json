@@ -20,7 +20,7 @@
       "models": {
         "Qwen3-Coder-Next-Q4_0.gguf": {
           "name": "Qwen3-Coder-Next-Q4_K_M.gguf",
-          "limit": { "context": 100000, "output": 8000 }
+          "limit": { "context": 120000, "output": 8000 }
         }
       }
     },
@@ -50,6 +50,10 @@
         "stepfun-ai/step-3.5-flash:thinking": {
           "name": "Step 3.5 Flash (Thinking)",
           "limit": { "context": 256000, "output": 32000 }
+        },
+        "zai-org/glm-4.7-original:thinking": {
+          "name": "GLM 4.7 (Thinking)",
+          "limit": { "context": 200000, "output": 65000 }
         },
         "zai-org/glm-5": {
           "name": "GLM 5",
