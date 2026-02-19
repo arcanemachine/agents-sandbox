@@ -8,4 +8,4 @@ If working with Postgres via an external Docker container, make sure to set up t
 ./scripts/env-generator.sh
 ```
 
-Then, you can run this command in the container to initialize the environment: `source env.sh`
+Now, when you run `./shell`, it will have the correct Postgres IP address.
