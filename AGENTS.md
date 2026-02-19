@@ -31,25 +31,15 @@ On initial startup, check which model you are using. If you are using Opus, IMME
 
 ## Workflow Preferences
 
-**Git management** - User manages Git history manually. Don't worry about it unless explicitly asked.
+**Git management** - User may manage Git repo manually. If unsure, do not manage the Git repo.
 
-**Task tracking** - Use task management tools proactively for multi-step work (3+ steps)
+**Task tracking** - Use task management tools proactively for multi-step work.
 
-**Temporary todo file** - Create `AGENTS.TODO.md` in the project directory. Keep it simple:
-
-- Brief bullet points only, no subsections
-- Add ISO datetime stamp heading for each session
-- Remove items when they have been completed (if unsure, then ask first)
-
-**Sub-agents** - Use specialized agents (Explore, Bash, general-purpose) when appropriate for:
-
-- Complex codebase searches
-- Background/parallel work
-- Multi-step research tasks
+**Sub-agents** - Dispatch significant tasks to a sub-agent. Do not make the sub-agent work for very long!
 
 **New repo setup** - Check for LLM/agent docs using globs (case-insensitive): `*usage*.md`, `*claude*.md`, `*agent*.md`, `*ai*.md`, `.claude/`
 
-## Dev Container
+## Devcontainer
 
 **Location**: `/workspace/.devcontainer/`
 
@@ -58,6 +48,8 @@ On initial startup, check which model you are using. If you are using Opus, IMME
 - Firewall config: `/workspace/.devcontainer/init-firewall.sh`
 - Allowed domains must be added to the domain list in init-firewall.sh
 - Changes require container restart to take effect
+- **Important**: When adding domains, also add their subdomains (e.g., `huggingface.co` also needs `cdn.huggingface.co`)
+- **Important**: For Python projects using PyTorch, add `download.pytorch.org` to the domain list
 
 ## Environment Setup
 
@@ -65,7 +57,10 @@ On initial startup, check which model you are using. If you are using Opus, IMME
 
 **Environment**: Source `/workspace/env.sh` to set up environment variables including `POSTGRES_HOST`. If `container.local.env` doesn't exist or connection fails, run `/workspace/scripts/env-generator.sh` from the host machine to regenerate it.
 
-## IEx Sessions (CRITICAL)
+
+## Elixir notes
+
+### IEx Sessions
 
 **ALWAYS use TMUX** when opening IEx sessions so they are persistent and user can view output:
 

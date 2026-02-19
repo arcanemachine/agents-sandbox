@@ -70,8 +70,10 @@ done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 # Resolve and add other allowed domains
 for domain in \
     "api.anthropic.com" \
+    "cdn.huggingface.co" \
     "elixirforum.com" \
     "exa.ai" \
+    "huggingface.co" \
     "registry.npmjs.org" \
     "integrate.api.nvidia.com" \
     "hex.pm" \
@@ -79,7 +81,8 @@ for domain in \
     "models.dev" \
     "opencode.ai" \
     "openrouter.ai" \
-    "www.python.org"; do
+    "www.python.org" \
+    "download.pytorch.org"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
     if [ -z "$ips" ]; then
