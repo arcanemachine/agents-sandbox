@@ -9,7 +9,7 @@
       "prompt": "{file:./prompts/simple-agent.txt}"
     }
   },
-  "plugin": ["opencode-pty"],
+  "plugin": ["opencode-pty", "opencode-notify-marker"],
   "provider": {
     "llamacpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -18,7 +18,7 @@
         "baseURL": "http://192.168.1.135:8080/v1"
       },
       "models": {
-        "Qwen3-Coder-Next-Q4_0.gguf": {
+        "Qwen3-Coder-Next-Q4_K_M.gguf": {
           "name": "Qwen3-Coder-Next-Q4_K_M.gguf",
           "limit": { "context": 120000, "output": 8000 }
         }
