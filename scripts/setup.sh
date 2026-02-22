@@ -62,23 +62,39 @@ asdf plugin add elixir https://github.com/asdf-vm/asdf-elixir.git 2>/dev/null ||
 asdf install
 
 # Create marker files to indicate successful setup
-touch ~/.asdf_elixir_ready  # Legacy marker for backward compatibility
 touch ~/.asdf_ready         # Generic marker
 
-# Symlink opencode config from workspace
+# Symlink OpenCode config from workspace
 mkdir -p ~/.config/opencode
 
-echo "Configuring opencode symlink..."
+echo "Configuring OpenCode symlink..."
 if [ -L ~/.config/opencode ]; then
     echo "opencode config already symlinked"
 elif [ -d ~/.config/opencode ]; then
     # Backup existing config and create symlink
-    mv ~/.config/opencode ~/.config/opencode.backup.$(date +%Y%m%d_%H%M%S)
+    mv ~/.config/opencode ~/.config/opencode.$(date +%Y%m%d_%H%M%S).bak
     ln -s /workspace/.opencode ~/.config/opencode
     echo "Backed up existing opencode config and created symlink"
+    echo "OpenCode config already symlinked"
 else
     ln -s /workspace/.opencode ~/.config/opencode
-    echo "Created opencode config symlink"
+    echo "Created OpenCode config symlink"
+fi
+
+# Symlink Pi config from workspace
+mkdir -p ~/.pi
+
+echo "Configuring pi symlink..."
+if [ -L ~/.pi ]; then
+    echo "pi config already symlinked"
+elif [ -d ~/.pi ]; then
+    # Backup existing config and create symlink
+    mv ~/.pi ~/.config/.pi.$(date +%Y%m%d_%H%M%S).bak
+    ln -s /workspace/.pi ~/.pi
+    echo "Backed up existing pi config and created symlink"
+else
+    ln -s /workspace/.pi ~/.pi
+    echo "Created pi config symlink"
 fi
 
 echo "Setup complete!"

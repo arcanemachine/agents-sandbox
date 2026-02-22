@@ -1,0 +1,21 @@
+{
+  "providers": {
+    "llama-server": {
+      "baseUrl": "http://192.168.1.100:8081/v1",
+      "api": "openai-completions",
+      "apiKey": "dummy",
+      "models": [
+        {
+          "id": "Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+          "contextWindow": 32000,
+          "maxTokens": 8000
+        },
+        {
+          "id": "Qwen3-Coder-Next-UD-TQ1_0.gguf",
+          "contextWindow": 64000,
+          "maxTokens": 8000
+        }
+      ]
+    }
+  }
+}

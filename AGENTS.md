@@ -31,11 +31,7 @@ On initial startup, check which model you are using. If you are using Opus, IMME
 
 ## Workflow Preferences
 
-**Git management** - User may manage Git repo manually. If unsure, do not manage the Git repo.
-
-**Task tracking** - Use task management tools proactively for multi-step work.
-
-**Sub-agents** - Dispatch significant tasks to a sub-agent. Do not make the sub-agent work for very long!
+**Git management** - User may want to manage Git repos manually. If unsure, do not manage the Git repo.
 
 **New repo setup** - Check for LLM/agent docs using globs (case-insensitive): `*usage*.md`, `*claude*.md`, `*agent*.md`, `*ai*.md`, `.claude/`
 

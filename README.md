@@ -24,8 +24,14 @@ npm i -g @devcontainers/cli
 # Run Claude Code directly
 ./claude.sh
 
+# Run Claude Code directly
+./claude.sh
+
 # Run OpenCode directly
 ./opencode.sh
+
+# Run pi directly (Make sure to use `--jinja` in llama-server if you are using your local LLM machine)
+./pi.sh
 
 # Enter the container shell
 ./shell.sh

@@ -3,8 +3,6 @@ FROM node:20
 ARG TZ
 ENV TZ="$TZ"
 
-ARG CLAUDE_CODE_VERSION=latest
-
 # Install basic development tools and iptables/ipset
 RUN apt-get update && apt-get install -y --no-install-recommends \
   less \
@@ -96,7 +94,10 @@ ENV VISUAL=nano
 RUN npm install -g opencode-ai
 
 # Install Claude Code
-RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
+RUN npm install -g @anthropic-ai/claude-code@latest
+
+# Install Claude Code
+RUN npm install -g @mariozechner/pi-coding-agent
 
 # Copy and set up firewall script
 COPY init-firewall.sh /usr/local/bin/

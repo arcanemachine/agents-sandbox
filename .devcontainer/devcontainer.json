@@ -16,7 +16,7 @@
     "source=agents-sandbox-claude-code-config,target=/home/node/.claude,type=volume",
     "source=agents-sandbox-asdf,target=/home/node/.asdf,type=volume",
     "source=agents-sandbox-opencode-session-history,target=/home/node/.local/state/opencode,type=volume",
-    "source=agents-sandbox-opencode-api-keys,target=/home/node/.local/share/opencode,type=volume"
+    "source=agents-sandbox-opencode-api-keys,target=/home/node/.local/share/opencode,type=volume",
   ],
   "containerEnv": {
     "NODE_OPTIONS": "--max-old-space-size=4096"
