@@ -1,6 +1,6 @@
 {
   "providers": {
-    "llama-server": {
+    "llama-local": {
       "baseUrl": "http://192.168.1.100:8081/v1",
       "api": "openai-completions",
       "apiKey": "dummy",
@@ -13,6 +13,18 @@
         {
           "id": "Qwen3-Coder-Next-UD-TQ1_0.gguf",
           "contextWindow": 64000,
+          "maxTokens": 8000
+        }
+      ]
+    },
+    "llama-beast": {
+      "baseUrl": "http://192.168.1.135:8080/v1",
+      "api": "openai-completions",
+      "apiKey": "dummy",
+      "models": [
+        {
+          "id": "Qwen3-Coder-Next-Q4_K_M.gguf",
+          "contextWindow": 100000,
           "maxTokens": 8000
         }
       ]
