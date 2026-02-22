@@ -1,130 +1,52 @@
 # Multi-Language Development Workspace
 
-On initial startup, check which model you are using. If you are using Opus, IMMEDIATELY warn the user so that they can change the model.
+- This workspace is used to create and work on software development projects in various different languages.
+- Some common languages used in this workspace are: Elixir, Python
+- User calls `AGENTS.md` and `CLAUDE.md` the "agent file".
+  - The workspace contains a top-level agent file: `/workspace/AGENTS.md`, which is symlinked to `CLAUDE.md`.
 
-**IMPORTANT**: Ask before destructive actions (updating deps, deleting files, modifying configs, etc.)
+## Guidelines
 
-**Environment**: Running in a dev container with firewall restrictions
+- Your context window is precious! Do not waste tokens!
+  - Instead of reading a whole file, you may want to read a portion of it, or call out to an external tool to get the information you need.
 
-**Primary use**: Elixir development, configured via asdf
+## Environment
 
-**NOTE**: User calls AGENTS.md and CLAUDE.md the "agents file" or "memory file". When user says "memory file", they mean those files (top-level or project-level).
+- This session is running in a devcontainer, which is configured here: `/workspace/.devcontainer/`
 
-- The AGENTS.md and CLAUDE.md files are all symlinked to the same location. If the user asks to edit the file, editing any one of those files will be sufficient (top-level or project-level).
+## Workflow preferences
 
-**DO NOT WORRY ABOUT LANGUAGE VERSIONS** - Used whatever has been configured.
+### Language versions
 
-## Tool Calling Instructions
+- Use `asdf` to manage language versions.
+- Use whatever language has been configured. Avoid installing new language versions whenever possible.
 
- When using tools in this system, follow these guidelines:
+### Source control
 
- 1. **Use JSON format for tool calls**: Each tool invocation must be in valid JSON format
- 2. **Format**:
+- Use Git for source control.
+- User may want to manage Git repos manually. If unsure, do not manage the Git repo.
+- If you are managing a Git repo for a project, ensure you are working with the correct repo!
+  - Do not confuse the workspace repo (`/workspace/.git`) with the project repo (`/workspace/projects/[project-name]/.git`).
 
-{
-  "name": "tool-name",
-  "arguments": {
-    "parameter1": "value1",
-    "parameter2": "value2"
-  }
-}
+## Initialization instructions
 
-## Workflow Preferences
-
-**Git management** - User may want to manage Git repos manually. If unsure, do not manage the Git repo.
-
-**New repo setup** - Check for LLM/agent docs using globs (case-insensitive): `*usage*.md`, `*claude*.md`, `*agent*.md`, `*ai*.md`, `.claude/`
-
-## Devcontainer
-
-**Location**: `/workspace/.devcontainer/`
-
-**Firewall**: Restricts outbound network access to explicitly allowed domains only
-
-- Firewall config: `/workspace/.devcontainer/init-firewall.sh`
-- Allowed domains must be added to the domain list in init-firewall.sh
-- Changes require container restart to take effect
-- **Important**: When adding domains, also add their subdomains (e.g., `huggingface.co` also needs `cdn.huggingface.co`)
-- **Important**: For Python projects using PyTorch, add `download.pytorch.org` to the domain list
-
-## Environment Setup
-
-**On user "init" command**: ALWAYS run `/workspace/scripts/setup.sh` first to ensure environment is properly configured.
-
-**Environment**: Source `/workspace/env.sh` to set up environment variables including `POSTGRES_HOST`. If `container.local.env` doesn't exist or connection fails, run `/workspace/scripts/env-generator.sh` from the host machine to regenerate it.
-
-
-## Elixir notes
-
-### IEx Sessions
-
-**ALWAYS use TMUX** when opening IEx sessions so they are persistent and user can view output:
-
-```bash
-tmux new-session -d -s <session_name> "bash -l -c 'cd /path/to/project && iex -S mix'"
-```
-
-- Use `tmux attach -t <session_name>` to view the session
-- Use `tmux ls` to list active sessions
-
-**User can view IEx output themselves** - When running IEx commands for the user in tmux, just execute them. User knows when output is there and does not need assistance viewing it. Do not show or capture output from tmux for the user - they can see it themselves in tmux.
-
-**Use correct syntax to invoke the correct environment**: May need to use `bash -l -c 'your command'`
-
-**ASDF automatically handles versions** when run from project directory - no need to manually check .tool-versions files
-**Web searches**: Prefer using local tools over web searches when possible
-
-**Running tests**: Bash tool requires explicit PATH setup:
-
-```bash
-export PATH="$HOME/.asdf/shims:$HOME/.asdf/bin:$PATH" && export POSTGRES_HOST=<ip_if_needed> && mix test
-```
-
-**Tip**: Use the `workdir` parameter in Bash tool instead of `cd` - this ensures PATH and environment are preserved:
-
-```bash
-export PATH="$HOME/.asdf/shims:$HOME/.asdf/bin:$PATH" && export POSTGRES_HOST=$(cat /workspace/container.local.env | grep POSTGRES_HOST | cut -d= -f2) && mix test
-```
-
-with `workdir="/workspace/projects/<project-name>"`
-
-**IMPORTANT**: Do NOT use `source /workspace/env.sh` with `workdir` - env.sh uses relative paths that break when workdir changes. Extract POSTGRES_HOST directly from container.local.env instead.
-
-## OpenCode
-
-**Config:** `/workspace/.opencode/opencode.json`
-**Ollama Host:** `172.16.0.1:11434`
-**List models:** `curl http://172.16.0.1:11434/api/tags`
-
-## Gotchas
-
-**Tmux send-keys breaks on `!`** - Don't use for complex Elixir code, use `mix run -e` instead
-
-## Python Projects
-
-**Check for Python via ASDF first** when starting a Python project:
-
-1. Run `asdf list python` to check if Python is installed
-2. If Python is not installed, first add the plugin: `asdf plugin add python`
-3. Ask the user which version they want (e.g., "Which Python version would you like to install? 3.11, 3.12, etc."). If they don't specify a patch version, use the newest one (use `asdf list all python` to get all current available versions).
-4. Install with: `asdf install python <version>`
-5. Set the version: `asdf set python <version>` (use `set`, not `local`)
-6. **Firewall**: PyPI domains (`pypi.org`, `files.pythonhosted.org`) must be in `/workspace/.devcontainer/init-firewall.sh` for pip to work - changes require container restart
-7. Then proceed with project setup
-
-**Virtual Environment Basics**:
-- Create venv: `python -m venv venv`
-- Activate venv: `source venv/bin/activate`
-- Always use `workdir` parameter with Bash tool for correct PATH
-
-**Pip in venv**:
-- If pip is missing in venv, use ASDF Python: `python -m pip install <package>`
-
-**Common Pitfalls**:
-- `pip` alone may not work in venv without proper PATH setup - use `python -m pip` instead
-- Network requests fail if domain isn't in firewall allow list
-- Use `export PATH="$HOME/.asdf/shims:$HOME/.asdf/bin:$PATH"` before Python commands when using Bash tool with workdir
+- When first starting up, check which LLM model you are using.
+  - If you are using Opus, stop what you are doing and immediately warn the user so that they can change the model.
+- If the user says "init" on startup:
+  - Run `/workspace/scripts/setup.sh` to ensure environment is properly configured.
+  - Source `/workspace/env.sh` to set up environment variables including `POSTGRES_HOST`.
+    - If `container.local.env` doesn't exist or connection fails, tell the user to run `/workspace/scripts/env-generator.sh` from the host machine to regenerate it.
 
 ## Project-Specific Instructions
 
-For project-specific setup and workflows, check `/workspace/projects/<project-name>/.claude/CLAUDE.md`
+- A project may contain its own agent file.
+- Check for LLM/agent docs using globs (case-insensitive): `*usage*.md`, `*claude*.md`, `*agent*.md`, `.claude/`
+- When you know what language the project is written in, check for a language-specific agent file in `/workspace/.agents/languages`.
+  - Example: For an Elixir project: `/workspace/.agents/languages/elixir.md`
+- If you are supposed to be managing the Git history, ensure that you make regular commits.
+
+## Tools
+
+### tmux
+
+- Prefer `tmux` for shell persistence.
