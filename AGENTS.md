@@ -7,12 +7,9 @@
 
 ## Guidelines
 
-- Your context window is precious! Do not waste tokens!
+- Your context window is precious:
+  - Do not waste tokens! Know when to keep going, and when to stop.
   - Instead of reading a whole file, you may want to read a portion of it, or call out to an external tool to get the information you need.
-
-## Environment
-
-- This session is running in a devcontainer, which is configured here: `/workspace/.devcontainer/`
 
 ## Workflow preferences
 
@@ -39,14 +36,21 @@
 
 ## Project-Specific Instructions
 
-- A project may contain its own agent file.
 - Check for LLM/agent docs using globs (case-insensitive): `*usage*.md`, `*claude*.md`, `*agent*.md`, `.claude/`
 - When you know what language the project is written in, check for a language-specific agent file in `/workspace/.agents/languages`.
   - Example: For an Elixir project: `/workspace/.agents/languages/elixir.md`
 - If you are supposed to be managing the Git history, ensure that you make regular commits.
+- After first reading the agent file, STOP and await further instructions, unless you have been instructed to continue.
+
+### Project agent files
+
+- In addition to the default `AGENTS.md` file, a project may contain the other local (i.e. gitignored) agent files:
+  - `AGENTS.gitignored.md` - High-level instructions that are specific to the machine you are currently working from
+  - `AGENTS.TODO.gitignored.md` - Use this to manage your ongoing assignments.
 
 ## Tools
 
 ### tmux
 
 - Prefer `tmux` for shell persistence.
+- If you are running a tmux session that the user should watch, use a persistent tmux session, and do not kill it when you are done.
