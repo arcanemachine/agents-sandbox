@@ -31,7 +31,7 @@
   - If you are using Opus, stop what you are doing and immediately warn the user so that they can change the model.
 - If the user says "init" on startup:
   - Run `/workspace/scripts/setup.sh` to ensure environment is properly configured.
-  - Source `/workspace/env.sh` to set up environment variables including `POSTGRES_HOST`.
+  - Source `/workspace/env.sh` to set up necessary environment variables including `POSTGRES_HOST`.
     - If `container.local.env` doesn't exist or connection fails, tell the user to run `/workspace/scripts/env-generator.sh` from the host machine to regenerate it.
 
 ## Project-Specific Instructions
