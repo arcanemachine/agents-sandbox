@@ -84,7 +84,7 @@ fi
 # Symlink Pi config from workspace
 mkdir -p ~/.pi
 
-echo "Configuring pi symlink..."
+echo "Configuring pi config symlink..."
 if [ -L ~/.pi ]; then
     echo "pi config already symlinked"
 elif [ -d ~/.pi ]; then

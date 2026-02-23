@@ -20,14 +20,14 @@ export default function(pi: ExtensionAPI) {
       });
 
       if (params.action === "search") {
-        const url = `${process.env.SEARXNG_URL ?? "http://127.0.0.1:8411"}/search?q=${encodeURIComponent(params.input)}&format=json&categories=general`;
+        const url = `${process.env.SEARXNG_URL ?? "http://127.0.0.1:8080"}/search?q=${encodeURIComponent(params.input)}&format=json&categories=general`;
         const res = await fetch(url);
 
         if (!res.ok) throw new Error(`SearXNG error: ${res.status} ${res.statusText}`);
 
         const data = await res.json();
         const results = (data.results ?? [])
-          .slice(0, 5)
+          .slice(0, 10)
           .map((r: any, i: number) => `${i + 1}. ${r.title}\n   ${r.url}\n   ${r.content ?? ""}`)
           .join("\n\n");
 
