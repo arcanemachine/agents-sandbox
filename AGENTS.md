@@ -1,27 +1,29 @@
 # Multi-Language Development Workspace
 
 - This workspace is used to create and work on software development projects in various different languages.
-- Some common languages used in this workspace are: Elixir, Python
 - User calls `AGENTS.md` and `CLAUDE.md` the "agent file".
   - The workspace contains a top-level agent file: `/workspace/AGENTS.md`, which is symlinked to `CLAUDE.md`.
+  - Projects may have their own agent file(s).
 
 ## Guidelines
 
-- Your context window is precious:
-  - Do not waste tokens! Know when to keep going, and when to stop.
-  - Instead of reading a whole file, you may want to read a portion of it, or call out to an external tool to get the information you need.
-  - You may search the web to discover new information when needed (e.g., research, documentation, latest developments).
+- Think before you act. Don't do anything stupid!
+- If you don't know something you can search the web to discover new information when needed.
 
 ## Workflow preferences
+
+- The main directory is `/workspace`.
+  - Projects go in `/workspace/projects`.
+  - Temp files go in `/tmp` or `/workspace/tmp` (for stuff that may be useful in a future session).
+  - If in doubt, start in `/workspace` when looking for files.
 
 ### Language versions
 
 - Use `asdf` to manage language versions.
-- Use whatever language has been configured. Avoid installing new language versions whenever possible.
+  - Use whatever language has been configured. Avoid installing new language versions whenever possible.
 
 ### Source control
 
-- Use Git for source control.
 - User may want to manage Git repos manually. If unsure, do not manage the Git repo.
 - If you are managing a Git repo for a project, ensure you are working with the correct repo!
   - Do not confuse the workspace repo (`/workspace/.git`) with the project repo (`/workspace/projects/[project-name]/.git`).
@@ -42,12 +44,6 @@
   - Example: For an Elixir project: `/workspace/.agents/languages/elixir.md`
 - If you are supposed to be managing the Git history, ensure that you make regular commits.
 - After first reading the agent file, STOP and await further instructions, unless you have been instructed to continue.
-
-### Project agent files
-
-- In addition to the default `AGENTS.md` file, a project may contain the other local (i.e. gitignored) agent files:
-  - `AGENTS.gitignored.md` - High-level instructions that are specific to the machine you are currently working from
-  - `AGENTS.TODO.gitignored.md` - Use this to manage your ongoing assignments.
 
 ## Tools
 

@@ -3,7 +3,6 @@
   "defaultProvider": "llama-beast",
   "defaultModel": "Qwen3-Coder-Next-Q4_K_M.gguf",
   "packages": [
-    "../../../../workspace/projects/pi-notify-marker",
-    "../../../../workspace/projects/pi-search"
+    "../../../../workspace/projects/pi-notify-marker"
   ]
 }
