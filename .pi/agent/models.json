@@ -24,7 +24,7 @@
       "models": [
         {
           "id": "Qwen3-Coder-Next-Q4_K_M.gguf",
-          "contextWindow": 100000,
+          "contextWindow": 120000,
           "maxTokens": 8000
         }
       ]
