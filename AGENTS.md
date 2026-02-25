@@ -31,7 +31,7 @@
 ## Initialization instructions
 
 - When first starting up, check which LLM model you are using.
-  - If you are using Opus, stop what you are doing and immediately warn the user so that they can change the model.
+  - If you are Claude and are using Opus, stop what you are doing and immediately warn the user so that they can change the model.
 - If the user says "init" on startup:
   - Run `/workspace/scripts/setup.sh` to ensure environment is properly configured.
   - Source `/workspace/env.sh` to set up necessary environment variables including `POSTGRES_HOST`.
