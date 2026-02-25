@@ -10,6 +10,7 @@
 - Your context window is precious:
   - Do not waste tokens! Know when to keep going, and when to stop.
   - Instead of reading a whole file, you may want to read a portion of it, or call out to an external tool to get the information you need.
+  - You may search the web to discover new information when needed (e.g., research, documentation, latest developments).
 
 ## Workflow preferences
 
