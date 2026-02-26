@@ -1,6 +1,12 @@
 # Multi-Language Development Workspace
 
-- This workspace is used to create and work on software development projects in various different languages.
+This is the workspace agent file. The workspace has its own repo and agent files.
+
+Do not confuse the project repo with the workspace repo!
+  - Workspace: `/workspace`
+  - Projects: `/workspace/projects/[project-name]`
+
+This workspace is used to create and work on software development projects in various different languages.
 - User calls `AGENTS.md` and `CLAUDE.md` the "agent file".
   - The workspace contains a top-level agent file: `/workspace/AGENTS.md`, which is symlinked to `CLAUDE.md`.
   - Projects may have their own agent file(s).
@@ -13,9 +19,8 @@
 ## Workflow preferences
 
 - The main directory is `/workspace`.
-  - Projects go in `/workspace/projects`.
-  - Temp files go in `/tmp` or `/workspace/tmp` (for stuff that may be useful in a future session).
   - If in doubt, start in `/workspace` when looking for files.
+- Temp files go in `/tmp` or `/workspace/tmp` (for stuff that may be useful in a future session).
 
 ### Language versions
 
