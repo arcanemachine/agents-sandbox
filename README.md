@@ -21,14 +21,14 @@ npm i -g @devcontainers/cli
 # Start the dev container
 ./up.sh
 
-# Enter the container shell
-./shell.sh
+# Run Claude Code directly
+./claude.sh
 
 # Run OpenCode directly
 ./opencode.sh
 
-# Run Claude Code directly
-./claude.sh
+# Enter the container shell
+./shell.sh
 
 # Restart the container
 ./restart.sh
