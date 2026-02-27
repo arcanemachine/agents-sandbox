@@ -1,2 +1,2 @@
 echo "Starting OpenCode..."
-devcontainer-exec opencode $@
+devcontainer exec --workspace-folder . opencode $@
