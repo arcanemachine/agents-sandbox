@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.55.1",
-  "defaultProvider": "llama-beast",
-  "defaultModel": "Qwen3-Coder-Next-Q4_K_M.gguf",
+  "defaultProvider": "kimi-coding",
+  "defaultModel": "k2p5",
   "enabledModels": [
     "llama-beast/*",
     "llama-local/*",
