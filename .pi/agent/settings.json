@@ -1,7 +1,12 @@
 {
-  "lastChangelogVersion": "0.55.0",
+  "lastChangelogVersion": "0.55.1",
   "defaultProvider": "llama-beast",
   "defaultModel": "Qwen3-Coder-Next-Q4_K_M.gguf",
+  "enabledModels": [
+    "llama-beast/*",
+    "llama-local/*",
+    "kimi-coding/k2p5"
+  ],
   "packages": [
     "../../../../workspace/projects/pi-notify-marker"
   ]

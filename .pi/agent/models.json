@@ -36,6 +36,7 @@
       "models": [
         {
           "id": "k2p5",
+          "name": "Kimi K2.5",
           "contextWindow": 256000,
           "maxTokens": 32000
         }

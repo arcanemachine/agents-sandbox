@@ -54,9 +54,7 @@ npm i -g @devcontainers/cli
 
 ## Environment
 
-- **Languages**: Elixir and Python are supported out-of-the-box (via ASDF)
-- **Security**: Outbound firewall restricts network access to allowed domains only
-  - To add a domain to the allowlist, edit the domains in `.devcontainer/init-firewall.sh`, then restart the container (`./restart.sh`). (This is done in the host, not in the container.)
+- Languages: Elixir and Python are supported out-of-the-box (via ASDF)
 
 ## Setup
 
