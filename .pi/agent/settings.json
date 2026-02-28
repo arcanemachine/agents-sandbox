@@ -1,0 +1,9 @@
+{
+  "lastChangelogVersion": "0.55.3",
+  "defaultProvider": "kimi-coding",
+  "defaultModel": "k2p5",
+  "packages": [
+    "git:github.com/arcanemachine/pi-search"
+  ],
+  "defaultThinkingLevel": "off"
+}

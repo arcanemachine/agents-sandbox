@@ -7,11 +7,13 @@
       "models": [
         {
           "id": "Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+          "name": "Qwen3-Coder-30B-A3B",
           "contextWindow": 32000,
           "maxTokens": 8000
         },
         {
           "id": "Qwen3-Coder-Next-UD-TQ1_0.gguf",
+          "name": "Qwen3-Coder-Next (Local)",
           "contextWindow": 64000,
           "maxTokens": 8000
         }
@@ -24,21 +26,9 @@
       "models": [
         {
           "id": "Qwen3-Coder-Next-Q4_K_M.gguf",
+          "name": "Qwen3-Coder-Next (Beast)",
           "contextWindow": 60000,
           "maxTokens": 8000
-        }
-      ]
-    },
-    "kimi-coding": {
-      "baseUrl": "https://api.kimi.com/coding",
-      "api": "anthropic-messages",
-      "apiKey": "dummy",
-      "models": [
-        {
-          "id": "k2p5",
-          "name": "Kimi K2.5",
-          "contextWindow": 256000,
-          "maxTokens": 32000
         }
       ]
     }
