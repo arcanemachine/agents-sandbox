@@ -48,6 +48,15 @@ This workspace is used to create and work on software development projects in va
 - If you are supposed to be managing the Git history, ensure that you make regular commits.
 - After first reading the agent file, STOP and await further instructions, unless you have been instructed to continue.
 
+## Sub-Agents
+
+The pi-subagent extension is installed and provides parallel task execution via `spawn_subagent` tool.
+
+- Use sub-agents for independent tasks that can run in parallel
+- Examples: analyzing multiple files, searching different patterns, background tasks
+- Each sub-agent runs in isolation and reports back when complete
+- Check status with `/subagent list` or manage interactively with `/subagent interact`
+
 ## Tools
 
 ### tmux
