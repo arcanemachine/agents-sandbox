@@ -31,6 +31,19 @@
           "maxTokens": 8000
         }
       ]
+    },
+    "kimi-coding-custom": {
+      "baseUrl": "https://api.kimi.com/coding",
+      "api": "anthropic-messages",
+      "apiKey": "KIMI_API_KEY",
+      "models": [
+        {
+          "id": "k2p5",
+          "name": "Kimi K2.5",
+          "contextWindow": 262144,
+          "maxTokens": 32768
+        }
+      ]
     }
   }
 }
