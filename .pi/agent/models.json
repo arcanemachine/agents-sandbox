@@ -40,6 +40,7 @@
         {
           "id": "k2p5",
           "name": "Kimi K2.5",
+          "reasoning": true,
           "contextWindow": 262144,
           "maxTokens": 32768
         }
