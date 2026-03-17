@@ -33,6 +33,10 @@
         "Qwen3-Coder-Next-UD-TQ1_0.gguf": {
           "name": "Qwen3-Coder-Next-UD-TQ1_0.gguf",
           "limit": { "context": 64000, "output": 8000 }
+        },
+        "Qwen3.5": {
+          "name": "Qwen3.5-35B-A3B-Q3_K_M.gguf",
+          "limit": { "context": 64000, "output": 8000 }
         }
       }
     },

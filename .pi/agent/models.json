@@ -27,8 +27,8 @@
         {
           "id": "Qwen3-Coder-Next-Q4_K_M.gguf",
           "name": "Qwen3-Coder-Next (Beast)",
-          "contextWindow": 60000,
-          "maxTokens": 8000
+          "contextWindow": 100000,
+          "maxTokens": 20000
         }
       ]
     },
