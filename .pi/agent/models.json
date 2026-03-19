@@ -12,6 +12,12 @@
           "maxTokens": 8000
         },
         {
+          "id": "Qwen3.5-9B-Q4_K_M.gguf",
+          "name": "Qwen3-9",
+          "contextWindow": 32000,
+          "maxTokens": 8000
+        },
+        {
           "id": "Qwen3-Coder-Next-UD-TQ1_0.gguf",
           "name": "Qwen3-Coder-Next (Local)",
           "contextWindow": 64000,
