@@ -40,44 +40,16 @@
         }
       }
     },
-    "nanogpt-subscription": {
+    "nanogpt-custom": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "NanoGPT (Subscription)",
+      "name": "NanoGPT (Custom models)",
       "options": {
         "baseURL": "https://nano-gpt.com/api/subscription/v1"
       },
       "models": {
-        "minimax/minimax-m2.5": {
-          "name": "Minimax M2.5",
-          "limit": { "context": 200000, "output": 13000 }
-        },
-        "mistralai/mistral-large-3-675b-instruct-2512": {
-          "name": "Mistral Large 3 675B Instruct",
-          "limit": { "context": 260000, "output": 256000 }
-        },
         "moonshotai/kimi-k2.5:thinking": {
           "name": "Kimi K2.5 (Thinking)",
           "limit": { "context": 200000, "output": 32000 }
-        },
-        "qwen/qwen3-coder-next": {
-          "name": "Qwen3 Coder Next",
-          "limit": { "context": 256000, "output": 64000 }
-        },
-        "stepfun-ai/step-3.5-flash:thinking": {
-          "name": "Step 3.5 Flash (Thinking)",
-          "limit": { "context": 256000, "output": 32000 }
-        },
-        "zai-org/glm-4.7-original:thinking": {
-          "name": "GLM 4.7 (Thinking)",
-          "limit": { "context": 200000, "output": 65000 }
-        },
-        "zai-org/glm-5": {
-          "name": "GLM 5",
-          "limit": { "context": 200000, "output": 128000 }
-        },
-        "zai-org/glm-5:thinking": {
-          "name": "GLM 5 (Thinking)",
-          "limit": { "context": 200000, "output": 128000 }
         }
       }
     },
