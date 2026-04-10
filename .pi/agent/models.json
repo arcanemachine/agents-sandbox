@@ -69,6 +69,20 @@
           "reasoning": true,
           "contextWindow": 200000,
           "maxTokens": 32000
+        },
+        {
+          "id": "zai-org/glm-5.1",
+          "name": "GLM 5.1",
+          "reasoning": false,
+          "contextWindow": 200000,
+          "maxTokens": 130000
+        },
+        {
+          "id": "zai-org/glm-5.1:thinking",
+          "name": "GLM 5.1 (Thinking)",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 130000
         }
       ]
     }
