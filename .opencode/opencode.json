@@ -76,11 +76,27 @@
         }
       }
     },
+    "openrouter-custom": {
+      "name": "OpenRouter (Custom)",
+      "api": "openai-completions",
+      "options": {
+        "baseURL": "https://openrouter.ai/api/v1",
+        "apiKey": "{env:OPENROUTER_API_KEY}"
+      },
+      "models": {
+        "z-ai/glm-5.1": {
+          "name": "GLM 5.1",
+          "contextWindow": 200000,
+          "maxTokens": 120000
+        }
+      }
+    },
     "openrouter-free": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "OpenRouter (Free)",
       "options": {
-        "baseURL": "https://openrouter.ai/api/v1"
+        "baseURL": "https://openrouter.ai/api/v1",
+        "apiKey": "{env:OPENROUTER_FREE_API_KEY}"
       },
       "models": {
         "openrouter/pony-alpha": {
