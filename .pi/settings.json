@@ -1,0 +1,4 @@
+{
+  "defaultProvider": "llama-beast",
+  "defaultModel": "Qwen3-Coder-Next-Q4_K_M.gguf"
+}

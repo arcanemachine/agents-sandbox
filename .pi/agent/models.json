@@ -31,16 +31,22 @@
       "apiKey": "dummy",
       "models": [
         {
+          "id": "Qwen3-Coder-Next-Q4_K_M.gguf",
+          "name": "Qwen3-Coder-Next (Beast)",
+          "contextWindow": 120000,
+          "maxTokens": 20000
+        },
+        {
           "id": "Qwen3.5-122B-A10B-Q4_K_M-00001-of-00003.gguf",
           "name": "Qwen3.5-122B-A10B-Q4_K_M",
           "contextWindow": 120000,
           "maxTokens": 10000
         },
         {
-          "id": "Qwen3-Coder-Next-Q4_K_M.gguf",
-          "name": "Qwen3-Coder-Next (Beast)",
-          "contextWindow": 100000,
-          "maxTokens": 20000
+          "id": "Qwen3.5-27B-Q4_K_M.gguf",
+          "name": "Qwen3.5-27B-Q4_K_M",
+          "contextWindow": 120000,
+          "maxTokens": 10000
         }
       ]
     },
