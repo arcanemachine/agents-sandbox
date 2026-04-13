@@ -1,5 +1,11 @@
-.?venv
-.env
-*.local.*
+# Environment
 config.env
-pi-session-*
+
+# Local files
+*.local.*
+
+# Python
+.?venv
+
+
+.devcontainer/devcontainer.json
